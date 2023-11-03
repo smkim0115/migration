@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.smilegate.migration.dto.UserDto;
 import com.smilegate.migration.dto.UserParam;
-import com.smilehub.schatmig.util.CommonUtil;
 
 @RestController
 @RequestMapping(value = "/user")
