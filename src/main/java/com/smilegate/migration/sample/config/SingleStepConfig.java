@@ -1,12 +1,16 @@
 package com.smilegate.migration.sample.config;
 
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
-import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
-import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
+import org.springframework.batch.core.job.builder.JobBuilder;
+import org.springframework.batch.core.step.builder.StepBuilder;
+import org.springframework.batch.core.repository.JobRepository;
+import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import lombok.extern.slf4j.Slf4j;
@@ -16,27 +20,24 @@ import lombok.extern.slf4j.Slf4j;
 @EnableBatchProcessing
 public class SingleStepConfig {
 
-
-	@Autowired public JobBuilderFactory jobBuilderFactory;
-    @Autowired public StepBuilderFactory stepBuilderFactory;
-
+/*
     @Bean
-    public Job ExampleJob(){
-
-        Job exampleJob = jobBuilderFactory.get("exampleJob")
-                .start(Step())
+    public Job ExampleJob(JobRepository jobRepository, @Qualifier("myStep") Step myStep){
+    	return new JobBuilder("exampleJob", jobRepository)
+                .start(myStep)
                 .build();
-
-        return exampleJob;
     }
 
     @Bean
-    public Step Step() {
-        return stepBuilderFactory.get("step")
-                .tasklet((contribution, chunkContext) -> {
-                    log.info("Step!");
-                    return RepeatStatus.FINISHED;
-                })
+    public Tasklet myTasklet() {
+       return new MyTasklet();
+    }
+    
+	@Bean
+    public Step myStep(JobRepository jobRepository, Tasklet myTasklet, PlatformTransactionManager transactionManager) {
+        return new StepBuilder("myStep", jobRepository)
+                .tasklet(myTasklet,transactionManager)
                 .build();
-    }	
+    }
+*/  	
 }
