@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.smilegate.migration.dto.UserDto;
 import com.smilegate.migration.dto.UserParam;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @RestController
 @RequestMapping(value = "/user")
 public class SendBirdUsers {
@@ -27,8 +29,10 @@ public class SendBirdUsers {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@GetMapping("/count")
-	public UserParam getUserCount(@PathVariable String userType){
+	public UserParam getUserCount(HttpServletRequest request){
 	    // 데이터베이스 연동이 따로 되어있는 것이 없기 때문에 임시적으로 객체를 생성해서 넘겨줌
+		logger.info(request.toString()) ; 
+		
 	    return null;
 	}	  
 }
