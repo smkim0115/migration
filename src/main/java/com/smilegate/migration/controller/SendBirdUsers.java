@@ -30,7 +30,7 @@ public class SendBirdUsers {
 	
 	@GetMapping("/count")
 	public UserParam getUserCount(HttpServletRequest request){
-
+        // 테스트 
 		logger.info(request.toString()) ; 
 		
 	    return null;
