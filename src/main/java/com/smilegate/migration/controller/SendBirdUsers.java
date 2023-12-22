@@ -32,6 +32,7 @@ public class SendBirdUsers {
 	public UserParam getUserCount(HttpServletRequest request){
         // 테스트 /Request 확인 
 		logger.info(request.toString()) ; 
+		logger.info("=========================================") ; 
 		// commit 위한 테스트 주석 
 	    return null;
 	}	  
