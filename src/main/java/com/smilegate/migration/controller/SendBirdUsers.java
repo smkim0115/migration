@@ -34,6 +34,8 @@ public class SendBirdUsers {
 		logger.info(request.toString()) ; 
 		logger.info("=========================================") ; 
 		// commit 위한 테스트 주석 
+		
+		//
 	    return null;
 	}	  
 }
